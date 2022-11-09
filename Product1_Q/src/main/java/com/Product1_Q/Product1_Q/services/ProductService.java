@@ -17,7 +17,6 @@ public interface ProductService {
     List<Product> getBySkuOrDesignation (String skuOrDesignation) throws IOException, InterruptedException;
 
     List<ProductDTO> getCatalog() throws IOException, InterruptedException;
-    Product create(Product pt) throws IOException;
 
     BufferedImage generateCode128BarcodeImage(String barcodeText);
 

@@ -1,13 +1,9 @@
 package com.Product1_Q.Product1_Q.controllers;
 
-
-
 import com.Product1_Q.Product1_Q.model.Product;
 import com.Product1_Q.Product1_Q.model.ProductDTO;
-import com.Product1_Q.Product1_Q.repository.ProductRepository;
 import com.Product1_Q.Product1_Q.services.ProductServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,8 +15,6 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/products")
 public class ProductsController {
-    @Autowired
-    private ProductRepository repository;
     @Autowired
     private ProductServiceImp service;
 
@@ -38,12 +32,6 @@ public class ProductsController {
     @GetMapping(value = "/search")
     public Iterable<Product> getBySkuOrDesignation(@RequestParam("skuOrDesignation") final String skuOrDesignation) throws IOException, InterruptedException {
         return service.getBySkuOrDesignation(skuOrDesignation);
-    }
-
-    @PostMapping(value = "/create")
-    @ResponseStatus(HttpStatus.CREATED)
-      public Product createProduct(@RequestBody final Product pt) throws IOException {
-      return this.repository.save(pt);
     }
 
     @GetMapping(value = "/{sku}/barcode128", produces = MediaType.IMAGE_PNG_VALUE)

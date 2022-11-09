@@ -16,8 +16,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class ProductServiceImp implements ProductService{
@@ -50,11 +48,6 @@ public class ProductServiceImp implements ProductService{
             return productRepository.getProductBySkuOrDesignation(skuOrDesignation);
         }else
             return products;
-    }
-
-    @Override
-    public Product create(Product pt) throws IOException {
-        return repository.save(pt);
     }
 
     @Override
