@@ -6,7 +6,6 @@ import java.io.IOException;
 
 public interface ProductService {
 
-    Product create(Product pt) throws IOException;
-
+    Product create(Product pt) throws IOException, InterruptedException;
 
 }

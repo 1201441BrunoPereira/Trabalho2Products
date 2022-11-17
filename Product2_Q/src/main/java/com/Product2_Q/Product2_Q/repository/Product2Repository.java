@@ -1,7 +1,7 @@
-package com.Product1_Q.Product1_Q.repository;
+package com.Product2_Q.Product2_Q.repository;
 
 
-import com.Product1_Q.Product1_Q.model.Product;
+import com.Product2_Q.Product2_Q.model.Product;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
@@ -22,7 +22,7 @@ public class Product2Repository {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
-                .uri(URI.create("http://localhost:8082/products/internal?sku=" + sku))
+                .uri(URI.create("http://localhost:8080/products/internal?sku=" + sku))
                 .build();
 
         HttpResponse response = client.send(request,
@@ -45,7 +45,7 @@ public class Product2Repository {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .GET()
-                .uri(URI.create("http://localhost:8082/products/search/internal?skuOrDesignation="+skuOrDesignation))
+                .uri(URI.create("http://localhost:8080/products/search/internal?skuOrDesignation="+skuOrDesignation))
                 .build();
 
         HttpResponse response = client.send(request,

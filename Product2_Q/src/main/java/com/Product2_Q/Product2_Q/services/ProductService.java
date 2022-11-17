@@ -1,11 +1,7 @@
-package com.Product1_Q.Product1_Q.services;
+package com.Product2_Q.Product2_Q.services;
 
-
-
-
-import com.Product1_Q.Product1_Q.model.Product;
-import com.Product1_Q.Product1_Q.model.ProductDTO;
-
+import com.Product2_Q.Product2_Q.model.Product;
+import com.Product2_Q.Product2_Q.model.ProductDTO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;

@@ -1,19 +1,15 @@
-package com.Product1_Q.Product1_Q.services;
+package com.Product2_Q.Product2_Q.services;
 
-
-
-import com.Product1_Q.Product1_Q.model.Product;
-import com.Product1_Q.Product1_Q.model.ProductDTO;
-import com.Product1_Q.Product1_Q.repository.Product2Repository;
-import com.Product1_Q.Product1_Q.repository.ProductRepository;
+import com.Product2_Q.Product2_Q.model.Product;
+import com.Product2_Q.Product2_Q.model.ProductDTO;
+import com.Product2_Q.Product2_Q.repository.Product2Repository;
+import com.Product2_Q.Product2_Q.repository.ProductRepository;
 import org.krysalis.barcode4j.impl.code128.Code128Bean;
 import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
-
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
@@ -35,11 +31,12 @@ public class ProductServiceImp implements ProductService{
 
     @Override
     public Object getBySku(final String sku) throws IOException, InterruptedException {
-        Product productOptional = repository.getBySku(sku);
-        if(productOptional == null){
+        Optional<Product> productOptional = repository.findById(sku);
+        boolean isPresent = productOptional.isPresent();
+        if(!isPresent){
             return productRepository.getProduct(sku);
         }
-        return productOptional;
+        return productOptional.get();
     }
 
     @Override

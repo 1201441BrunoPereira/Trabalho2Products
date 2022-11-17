@@ -1,8 +1,9 @@
-package com.Product1_Q.Product1_Q.controllers;
+package com.Product2_Q.Product2_Q.controllers;
 
-import com.Product1_Q.Product1_Q.model.Product;
-import com.Product1_Q.Product1_Q.model.ProductDTO;
-import com.Product1_Q.Product1_Q.services.ProductServiceImp;
+
+import com.Product2_Q.Product2_Q.model.Product;
+import com.Product2_Q.Product2_Q.model.ProductDTO;
+import com.Product2_Q.Product2_Q.services.ProductServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
