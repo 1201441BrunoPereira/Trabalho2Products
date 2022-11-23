@@ -40,9 +40,8 @@ public class ProductServiceImp implements ProductService{
     }
 
     @Override
-    public Object internalGetBySku(final String sku){
-        Optional<Product> productOptional = repository.findById(sku);
-        return productOptional.get();
+    public Object internalGetBySku(final String sku) {
+        return repository.findById(sku).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Product Not Found"));
     }
 
     @Override

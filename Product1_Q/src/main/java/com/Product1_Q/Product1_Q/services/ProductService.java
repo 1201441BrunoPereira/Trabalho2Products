@@ -14,7 +14,7 @@ public interface ProductService {
 
     Object getBySku(String sku) throws IOException, InterruptedException;
 
-    Object internalGetBySku (String sku);
+    Object internalGetBySku (String sku) throws Exception;
 
     List<Product> getBySkuOrDesignation (String skuOrDesignation) throws IOException, InterruptedException;
 
