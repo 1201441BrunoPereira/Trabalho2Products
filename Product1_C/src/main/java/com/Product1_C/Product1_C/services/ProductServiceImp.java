@@ -1,6 +1,7 @@
 package com.Product1_C.Product1_C.services;
 
 
+import com.Product1_C.Product1_C.RabbitMQ.RabbitMQPublisher;
 import com.Product1_C.Product1_C.model.Product;
 import com.Product1_C.Product1_C.repository.Product2Repository;
 import com.Product1_C.Product1_C.repository.ProductRepository;
@@ -28,6 +29,10 @@ public class ProductServiceImp implements ProductService{
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
+    @Autowired
+    private RabbitMQPublisher jsonProducer;
+
+
     @Override
     public Product create(Product pt) throws IOException, InterruptedException {
         Product internalProduct = repository.getBySku(pt.getSku());
@@ -36,12 +41,15 @@ public class ProductServiceImp implements ProductService{
             if(!existProduct){
                 ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
                 String json = ow.writeValueAsString(pt);
-                rabbitTemplate.convertAndSend("myQueue", json);
+                jsonProducer.sendJsonMessage(json);
                 return repository.save(pt);
             }
         }
         throw new ResponseStatusException(HttpStatus.CONFLICT,"Product already exist");
     }
+
+
+
 
 
 }
