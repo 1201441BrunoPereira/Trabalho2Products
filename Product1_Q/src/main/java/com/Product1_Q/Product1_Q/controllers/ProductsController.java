@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -24,11 +22,11 @@ public class ProductsController {
         return ResponseEntity.ok().body(product);
     }
 
-    @GetMapping("/internal")
+/*    @GetMapping("/internal")
     public ResponseEntity<Product> internalGetBySku(@RequestParam("sku") final String sku){
         final Product product = (Product) service.internalGetBySku(sku);
         return ResponseEntity.ok().body(product);
-    }
+    }*/
 
     @GetMapping("/catalog")
     public Iterable<ProductDTO> getCatalog(){
@@ -40,11 +38,11 @@ public class ProductsController {
         return service.getBySkuOrDesignation(skuOrDesignation);
     }
 
-    @GetMapping(value = "/internalSearch")
+/*    @GetMapping(value = "/internalSearch")
     public Iterable<Product> internalGetBySkuOrDesignation(@RequestParam("skuOrDesignation") final String skuOrDesignation) {
         return service.internalGetBySkuOrDesignation(skuOrDesignation);
 
-    }
+    }*/
 
     @GetMapping(value = "/{sku}/barcode128", produces = MediaType.IMAGE_PNG_VALUE)
     public ResponseEntity<BufferedImage> barbecueCode128Barcode(@PathVariable("sku") final String sku) throws Exception {

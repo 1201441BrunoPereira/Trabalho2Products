@@ -33,31 +33,31 @@ public class ProductServiceImp implements ProductService{
         return repository.getCatalog();
     }
 
-    @Override
+/*    @Override
     public Object getBySku(final String sku) throws IOException, InterruptedException {
         Product productOptional = repository.getBySku(sku);
         if(productOptional == null){
             return productRepository.getProduct(sku);
         }
         return productOptional;
-    }
+    }*/
 
     @Override
-    public Object internalGetBySku(final String sku) {
+    public Object getBySku(final String sku) {
         return repository.findById(sku).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Product Not Found"));
     }
 
-    @Override
+/*    @Override
     public List<Product> getBySkuOrDesignation(String skuOrDesignation) throws IOException, InterruptedException {
         List<Product> products = repository.getBySkuOrDesignation(skuOrDesignation);
         if(products.isEmpty()){
             return productRepository.getProductBySkuOrDesignation(skuOrDesignation);
         }else
             return products;
-    }
+    }*/
 
     @Override
-    public List<Product> internalGetBySkuOrDesignation(String skuOrDesignation) {
+    public List<Product> getBySkuOrDesignation(String skuOrDesignation) {
         List <Product> product = repository.getBySkuOrDesignation(skuOrDesignation);
 
         if (product.isEmpty()){

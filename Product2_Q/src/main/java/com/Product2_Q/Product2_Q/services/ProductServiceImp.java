@@ -11,9 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductServiceImp implements ProductService{
@@ -21,15 +19,12 @@ public class ProductServiceImp implements ProductService{
     @Autowired
     private ProductRepository repository;
 
-    @Autowired
-    private Product2Repository productRepository;
-
     @Override
     public List<ProductDTO> getCatalog(){
         return repository.getCatalog();
     }
 
-    @Override
+/*    @Override
     public Object getBySku(final String sku) throws IOException, InterruptedException {
         Optional<Product> productOptional = repository.findById(sku);
         boolean isPresent = productOptional.isPresent();
@@ -37,24 +32,24 @@ public class ProductServiceImp implements ProductService{
             return productRepository.getProduct(sku);
         }
         return productOptional.get();
-    }
+    }*/
 
     @Override
-    public Object internalGetBySku(final String sku) {
+    public Object getBySku(final String sku) {
         return repository.findById(sku).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Product Not Found"));
     }
 
-    @Override
+/*    @Override
     public List<Product> getBySkuOrDesignation(String skuOrDesignation) throws IOException, InterruptedException {
         List<Product> products = repository.getBySkuOrDesignation(skuOrDesignation);
         if(products.isEmpty()){
             return productRepository.getProductBySkuOrDesignation(skuOrDesignation);
         }else
             return products;
-    }
+    }*/
 
     @Override
-    public List<Product> internalGetBySkuOrDesignation(String skuOrDesignation) {
+    public List<Product> getBySkuOrDesignation(String skuOrDesignation) {
         List <Product> product = repository.getBySkuOrDesignation(skuOrDesignation);
 
         if (product.isEmpty()){
