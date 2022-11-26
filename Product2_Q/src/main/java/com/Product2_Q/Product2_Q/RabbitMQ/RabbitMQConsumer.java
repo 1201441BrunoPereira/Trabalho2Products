@@ -19,7 +19,7 @@ public class RabbitMQConsumer {
         ObjectMapper objectMapper = new ObjectMapper();
         Product pt = objectMapper.readValue(product, Product.class);
         productRepository.save(pt);
-        System.out.println(product);
+        System.out.println("Creating product in Database with sku:" + pt.getSku());
     }
 
 }

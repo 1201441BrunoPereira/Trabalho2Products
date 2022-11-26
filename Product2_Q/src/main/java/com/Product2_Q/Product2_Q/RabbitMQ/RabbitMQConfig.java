@@ -18,7 +18,7 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public Binding binding1(FanoutExchange fanout, Queue autoDeleteQueue2) {
-        return BindingBuilder.bind(autoDeleteQueue2).to(fanout);
+    public Binding binding(FanoutExchange fanout, Queue autoDeleteQueue) {
+        return BindingBuilder.bind(autoDeleteQueue).to(fanout);
     }
 }

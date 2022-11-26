@@ -14,12 +14,12 @@ public class RabbitMQConsumer {
     @Autowired
     private ProductRepository productRepository;
 
-    @RabbitListener(queues = "#{autoDeleteQueue1.name}")
+    @RabbitListener(queues = "#{autoDeleteQueue.name}")
     public void consumeJsonMessage(String product) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
         Product pt = objectMapper.readValue(product, Product.class);
         productRepository.save(pt);
-        System.out.println(product);
+        System.out.println("Creating product in Database with sku:" + pt.getSku());
     }
 
 }

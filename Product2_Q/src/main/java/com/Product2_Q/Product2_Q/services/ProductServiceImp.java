@@ -2,7 +2,6 @@ package com.Product2_Q.Product2_Q.services;
 
 import com.Product2_Q.Product2_Q.model.Product;
 import com.Product2_Q.Product2_Q.model.ProductDTO;
-import com.Product2_Q.Product2_Q.repository.Product2Repository;
 import com.Product2_Q.Product2_Q.repository.ProductRepository;
 import org.krysalis.barcode4j.impl.code128.Code128Bean;
 import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;

@@ -1,7 +1,5 @@
 package com.Product1_Q.Product1_Q.services;
 
-
-
 import com.Product1_Q.Product1_Q.model.Product;
 import com.Product1_Q.Product1_Q.model.ProductDTO;
 import com.Product1_Q.Product1_Q.repository.Product2Repository;
@@ -12,12 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
-
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProductServiceImp implements ProductService{

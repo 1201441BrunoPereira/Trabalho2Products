@@ -13,12 +13,12 @@ public class RabbitMQConfig {
     }
 
     @Bean
-    public Queue autoDeleteQueue1() {
+    public Queue autoDeleteQueue() {
         return new AnonymousQueue();
     }
 
     @Bean
-    public Binding binding1(FanoutExchange fanout, Queue autoDeleteQueue1) {
-        return BindingBuilder.bind(autoDeleteQueue1).to(fanout);
+    public Binding binding(FanoutExchange fanout, Queue autoDeleteQueue) {
+        return BindingBuilder.bind(autoDeleteQueue).to(fanout);
     }
 }
