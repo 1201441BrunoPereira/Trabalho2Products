@@ -19,8 +19,8 @@ public class ProductServiceImp implements ProductService{
     @Autowired
     private ProductRepository repository;
 
-    @Autowired
-    private Product2Repository productRepository;
+//  @Autowired
+//  private Product2Repository productRepository;
 
     @Override
     public List<ProductDTO> getCatalog(){

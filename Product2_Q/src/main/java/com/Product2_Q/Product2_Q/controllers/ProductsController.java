@@ -46,7 +46,7 @@ public class ProductsController {
     }*/
 
     @GetMapping(value = "/{sku}/barcode128", produces = MediaType.IMAGE_PNG_VALUE)
-    public ResponseEntity<BufferedImage> barbecueCode128Barcode(@PathVariable("sku") final String sku) throws Exception {
+    public ResponseEntity<BufferedImage> barbecueCode128Barcode(@PathVariable("sku") final String sku) {
         return ResponseEntity.ok(service.generateCode128BarcodeImage(sku));
     }
 
