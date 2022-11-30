@@ -1,0 +1,20 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autoactivate on
+autonumber
+
+actor "User" as User
+participant ":UIProduct_Q" as pro1
+
+activate User
+
+User -> pro1: GET/products/{sku}/barcode128
+pro1 --> User: Product
+User -> pro1: GET/products?sku={sku}
+pro1 --> User: Product
+User -> pro1: GET/products/search
+pro1 --> User: List<Product>
+User -> pro1: GET/products/catalog
+pro1 --> User: Iterable<Product>
+@enduml

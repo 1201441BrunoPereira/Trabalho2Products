@@ -1,0 +1,12 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autoactivate on
+autonumber
+
+participant ":UIProduct_Q" as pro
+participant ":Product_Q" as pro1
+
+pro -> pro1: GET/products/search
+pro1 --> pro: List<Product>
+@enduml
