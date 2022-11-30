@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autoactivate on
+autonumber
+
+actor "User" as User
+participant ":UIProduct_C" as pro1
+
+activate User
+
+User -> pro1: POST/products/create
+pro1 --> User: Product
+@enduml
