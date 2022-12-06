@@ -22,8 +22,9 @@ public class ProductServiceImp implements ProductService{
     @Override
     public Product create(Product pt) throws JsonProcessingException {
         Product internalProduct = repository.getBySku(pt.getSku());
-        if(internalProduct != null){
+        if(internalProduct == null){
             jsonProducer.sendJsonMessage(pt);
+            jsonProducer.sendSkuForReview(pt.getSku());
             return repository.save(pt);
         }
         throw new ResponseStatusException(HttpStatus.CONFLICT,"Product already exist");

@@ -18,10 +18,17 @@ public class RabbitMQPublisher {
     @Autowired
     private FanoutExchange fanout;
 
+    @Autowired
+    private FanoutExchange fanoutCreateProductReviews;
+
     public void sendJsonMessage(Product product) throws JsonProcessingException {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         String json = ow.writeValueAsString(product);
         template.convertAndSend(fanout.getName(), "", json);
+    }
+
+    public void sendSkuForReview(String sku){
+        template.convertAndSend(fanoutCreateProductReviews.getName(),"",sku);
     }
 
 }
