@@ -4,10 +4,7 @@
 autoactivate on
 autonumber
 
-participant ":UIProduct_Q" as pro
-participant ":Product_Q" as pro1
+participant ":Product_Q" as pro
 
-pro -> pro1: GET/products?sku={sku}
-pro1 --> pro: Product
 
 @enduml

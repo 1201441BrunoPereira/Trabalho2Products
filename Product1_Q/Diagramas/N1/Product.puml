@@ -5,7 +5,7 @@ autoactivate on
 autonumber
 
 actor "User" as User
-participant ":UIProduct_Q" as pro1
+participant ":APIProduct_Q" as pro1
 
 activate User
 

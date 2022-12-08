@@ -21,11 +21,6 @@ public class ProductsController {
         return ResponseEntity.ok().body(product);
     }
 
-/*    @GetMapping("/internal")
-    public ResponseEntity<Product> internalGetBySku(@RequestParam("sku") final String sku){
-        final Product product = (Product) service.internalGetBySku(sku);
-        return ResponseEntity.ok().body(product);
-    }*/
 
     @GetMapping("/catalog")
     public Iterable<ProductDTO> getCatalog(){
@@ -37,11 +32,6 @@ public class ProductsController {
         return service.getBySkuOrDesignation(skuOrDesignation);
     }
 
-/*    @GetMapping(value = "/internalSearch")
-    public Iterable<Product> internalGetBySkuOrDesignation(@RequestParam("skuOrDesignation") final String skuOrDesignation) {
-        return service.internalGetBySkuOrDesignation(skuOrDesignation);
-
-    }*/
 
     @GetMapping(value = "/{sku}/barcode128", produces = MediaType.IMAGE_PNG_VALUE)
     public ResponseEntity<BufferedImage> barbecueCode128Barcode(@PathVariable("sku") final String sku) {

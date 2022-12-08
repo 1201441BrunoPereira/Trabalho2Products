@@ -4,9 +4,6 @@
 autoactivate on
 autonumber
 
-participant ":UIProduct_Q" as pro
-participant ":Product_Q" as pro1
+participant ":Product_Q" as pro
 
-pro -> pro1: GET/products/catalog
-pro1 --> pro: Iterable<Product>
 @enduml
