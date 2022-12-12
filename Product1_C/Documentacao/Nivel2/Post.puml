@@ -4,9 +4,9 @@
 autoactivate on
 autonumber
 
-participant ":UIProduct_C" as pro1
-participant ":Product_C" as pro
+participant ":Product_C" as pro1
+participant ":AMQPBroker" as pro
 
-pro1 -> pro: POST/products/create
-pro --> pro1: Product
+pro1 -> pro: product.created
+pro --> pro1:
 @enduml

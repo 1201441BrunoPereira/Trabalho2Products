@@ -9,11 +9,9 @@ public interface ProductService {
 
     Object getBySku(String sku);
 
-    //Object internalGetBySku (String sku) throws Exception;
 
     List<Product> getBySkuOrDesignation (String skuOrDesignation);
 
-    //List<Product> internalGetBySkuOrDesignation (String skuOrDesignation);
 
     List<ProductDTO> getCatalog();
 
