@@ -2,6 +2,8 @@ package com.Product2_Q.Product2_Q.services;
 
 import com.Product2_Q.Product2_Q.model.Product;
 import com.Product2_Q.Product2_Q.model.ProductDTO;
+import com.fasterxml.jackson.core.JsonProcessingException;
+
 import java.awt.image.BufferedImage;
 import java.util.List;
 
@@ -18,5 +20,7 @@ public interface ProductService {
     List<ProductDTO> getCatalog();
 
     BufferedImage generateCode128BarcodeImage(String barcodeText);
+
+    void createByOther(String pt) throws JsonProcessingException;
 
 }

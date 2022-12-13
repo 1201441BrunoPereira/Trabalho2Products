@@ -3,6 +3,8 @@ package com.Product2_Q.Product2_Q.services;
 import com.Product2_Q.Product2_Q.model.Product;
 import com.Product2_Q.Product2_Q.model.ProductDTO;
 import com.Product2_Q.Product2_Q.Interfaces.repository.ProductRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.krysalis.barcode4j.impl.code128.Code128Bean;
 import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +49,13 @@ public class ProductServiceImp implements ProductService{
 
         barcodeGenerator.generateBarcode(canvas, barcodeText);
         return canvas.getBufferedImage();
+    }
+
+    @Override
+    public void createByOther(String product) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Product pt = objectMapper.readValue(product, Product.class);
+        repository.save(pt);
     }
 
 }

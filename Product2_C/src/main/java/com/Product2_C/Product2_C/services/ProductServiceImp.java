@@ -29,7 +29,12 @@ public class ProductServiceImp implements ProductService{
         throw new ResponseStatusException(HttpStatus.CONFLICT,"Product already exist");
     }
 
-
+    @Override
+    public void createByOther(String product) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        Product pt = objectMapper.readValue(product, Product.class);
+        repository.save(pt);
+    }
 
 
 

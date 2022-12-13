@@ -7,4 +7,6 @@ public interface ProductService {
 
     Product create(Product pt) throws JsonProcessingException;
 
+    void  createByOther(String pt) throws JsonProcessingException;
+
 }
