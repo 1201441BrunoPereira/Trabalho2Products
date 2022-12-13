@@ -17,10 +17,10 @@ public class Product implements Serializable{
     @Column(nullable = false)
     private String designation;
 
-    @Column(nullable = true)
+    @Column()
     private String description;
 
-    @Column(nullable = true)
+    @Column()
     private String image;
 
     public Product() {

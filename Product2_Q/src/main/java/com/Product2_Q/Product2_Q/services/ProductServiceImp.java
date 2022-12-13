@@ -2,7 +2,7 @@ package com.Product2_Q.Product2_Q.services;
 
 import com.Product2_Q.Product2_Q.model.Product;
 import com.Product2_Q.Product2_Q.model.ProductDTO;
-import com.Product2_Q.Product2_Q.repository.ProductRepository;
+import com.Product2_Q.Product2_Q.Interfaces.repository.ProductRepository;
 import org.krysalis.barcode4j.impl.code128.Code128Bean;
 import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,29 +23,11 @@ public class ProductServiceImp implements ProductService{
         return repository.getCatalog();
     }
 
-/*    @Override
-    public Object getBySku(final String sku) throws IOException, InterruptedException {
-        Optional<Product> productOptional = repository.findById(sku);
-        boolean isPresent = productOptional.isPresent();
-        if(!isPresent){
-            return productRepository.getProduct(sku);
-        }
-        return productOptional.get();
-    }*/
 
     @Override
     public Object getBySku(final String sku) {
         return repository.findById(sku).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Product Not Found"));
     }
-
-/*    @Override
-    public List<Product> getBySkuOrDesignation(String skuOrDesignation) throws IOException, InterruptedException {
-        List<Product> products = repository.getBySkuOrDesignation(skuOrDesignation);
-        if(products.isEmpty()){
-            return productRepository.getProductBySkuOrDesignation(skuOrDesignation);
-        }else
-            return products;
-    }*/
 
     @Override
     public List<Product> getBySkuOrDesignation(String skuOrDesignation) {

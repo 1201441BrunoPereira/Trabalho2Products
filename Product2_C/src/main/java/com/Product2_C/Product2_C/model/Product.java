@@ -1,4 +1,4 @@
-package com.Product2_Q.Product2_Q.model;
+package com.Product2_C.Product2_C.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,10 +17,10 @@ public class Product implements Serializable{
     @Column(nullable = false)
     private String designation;
 
-    @Column()
+    @Column(nullable = true)
     private String description;
 
-    @Column()
+    @Column(nullable = true)
     private String image;
 
     public Product() {

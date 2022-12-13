@@ -2,7 +2,7 @@ package com.Product1_Q.Product1_Q.services;
 
 import com.Product1_Q.Product1_Q.model.Product;
 import com.Product1_Q.Product1_Q.model.ProductDTO;
-import com.Product1_Q.Product1_Q.repository.ProductRepository;
+import com.Product1_Q.Product1_Q.Interfaces.repository.ProductRepository;
 import org.krysalis.barcode4j.impl.code128.Code128Bean;
 import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,6 @@ public class ProductServiceImp implements ProductService{
     public Object getBySku(final String sku) {
         return repository.findById(sku).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,"Product Not Found"));
     }
-
 
     @Override
     public List<Product> getBySkuOrDesignation(String skuOrDesignation) {

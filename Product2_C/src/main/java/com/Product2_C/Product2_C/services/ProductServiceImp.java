@@ -1,8 +1,8 @@
-package com.Product1_C.Product1_C.services;
+package com.Product2_C.Product2_C.services;
 
-import com.Product1_C.Product1_C.Interfaces.RabbitMQ.RabbitMQPublisher;
-import com.Product1_C.Product1_C.model.Product;
-import com.Product1_C.Product1_C.Interfaces.repository.ProductRepository;
+import com.Product2_C.Product2_C.Interfaces.RabbitMQ.RabbitMQPublisher;
+import com.Product2_C.Product2_C.Interfaces.repository.ProductRepository;
+import com.Product2_C.Product2_C.model.Product;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

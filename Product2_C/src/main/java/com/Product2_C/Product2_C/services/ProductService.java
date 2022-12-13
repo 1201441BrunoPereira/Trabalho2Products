@@ -1,6 +1,6 @@
-package com.Product1_C.Product1_C.services;
+package com.Product2_C.Product2_C.services;
 
-import com.Product1_C.Product1_C.model.Product;
+import com.Product2_C.Product2_C.model.Product;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 public interface ProductService {
