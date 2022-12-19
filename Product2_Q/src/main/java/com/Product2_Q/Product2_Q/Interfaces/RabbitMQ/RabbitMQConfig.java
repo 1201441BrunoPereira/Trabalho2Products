@@ -13,6 +13,11 @@ public class RabbitMQConfig {
     }
 
     @Bean
+    public DirectExchange exchange() {
+        return new DirectExchange("productRecovery.request");
+    }
+
+    @Bean
     public Queue autoDeleteQueue() {
         return new AnonymousQueue();
     }
