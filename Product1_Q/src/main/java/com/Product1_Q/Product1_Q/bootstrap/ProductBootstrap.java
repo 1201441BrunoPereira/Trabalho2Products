@@ -17,7 +17,7 @@ import java.util.List;
 
 @Component
 @Profile("bootstrap")
-public class pre_request implements CommandLineRunner {
+public class ProductBootstrap implements CommandLineRunner {
 
     @Autowired
     private RabbitTemplate template;
@@ -35,10 +35,13 @@ public class pre_request implements CommandLineRunner {
     public void run(String... args) throws JsonProcessingException {
         System.out.println(" [x] Requesting products from recovery system(" + start + ")");
         String response = (String) template.convertSendAndReceive(exchange.getName(), "rpc", start++);
-        ObjectMapper objectMapper = new ObjectMapper();
-        List<Product> pt = objectMapper.readValue(response, new TypeReference<>() {});
-        for (int i=0; i <= pt.size()-1;i++){
-            productRepository.save(pt.get(i));
+        if (response != null) {
+            ObjectMapper objectMapper = new ObjectMapper();
+            List<Product> pt = objectMapper.readValue(response, new TypeReference<>() {
+            });
+            for (int i = 0; i <= pt.size() - 1; i++) {
+                productRepository.save(pt.get(i));
+            }
         }
         System.out.println(" [.] Got '" + response + "'");
     }
