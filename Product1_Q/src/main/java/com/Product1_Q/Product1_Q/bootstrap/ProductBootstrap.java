@@ -1,5 +1,6 @@
 package com.Product1_Q.Product1_Q.bootstrap;
 
+
 import com.Product1_Q.Product1_Q.Interfaces.repository.ProductRepository;
 import com.Product1_Q.Product1_Q.model.Product;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -14,6 +15,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Objects;
 
 @Component
 @Profile("bootstrap")
@@ -28,21 +30,26 @@ public class ProductBootstrap implements CommandLineRunner {
     @Autowired
     private ProductRepository productRepository;
 
-    int start = 0;
+    int page = 0;
+    String response;
 
     @Override
     @Scheduled(fixedDelay = 1000, initialDelay = 500)
     public void run(String... args) throws JsonProcessingException {
-        System.out.println(" [x] Requesting products from recovery system(" + start + ")");
-        String response = (String) template.convertSendAndReceive(exchange.getName(), "rpc", start++);
-        if (response != null) {
-            ObjectMapper objectMapper = new ObjectMapper();
-            List<Product> pt = objectMapper.readValue(response, new TypeReference<>() {
-            });
-            for (int i = 0; i <= pt.size() - 1; i++) {
-                productRepository.save(pt.get(i));
+        System.out.println(" [x] Requesting products from recovery system");
+        do {
+            response = (String) template.convertSendAndReceive(exchange.getName(), "rpc", page);
+            if (response != null) {
+                ObjectMapper objectMapper = new ObjectMapper();
+                List<Product> pt = objectMapper.readValue(response, new TypeReference<>() {
+                });
+                for (int i = 0; i <= pt.size() - 1; i++) {
+                    productRepository.save(pt.get(i));
+                }
+                System.out.println(" [.] Got '" + response + "'");
+                page++;
             }
-        }
-        System.out.println(" [.] Got '" + response + "'");
+        }while (!Objects.equals(response, "[ ]"));
+
     }
 }
