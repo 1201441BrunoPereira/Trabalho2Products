@@ -21,9 +21,9 @@ public class RabbitMQConsumer {
 
 
     @RabbitListener(queues = "productRecovery.request")
-    public String productRecovery() throws JsonProcessingException {
+    public String productRecovery(int page) throws JsonProcessingException {
         System.out.println(" [x] Received request for product recovery");
-        return productServiceImp.getProducts();
+        return productServiceImp.getProducts(page);
     }
 
 }
