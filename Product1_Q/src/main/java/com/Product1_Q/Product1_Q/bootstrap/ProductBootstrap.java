@@ -1,6 +1,5 @@
 package com.Product1_Q.Product1_Q.bootstrap;
 
-
 import com.Product1_Q.Product1_Q.Interfaces.repository.ProductRepository;
 import com.Product1_Q.Product1_Q.model.Product;
 import com.fasterxml.jackson.core.JsonProcessingException;
