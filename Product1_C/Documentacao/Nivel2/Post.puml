@@ -10,3 +10,41 @@ participant ":AMQPBroker" as pro
 pro1 -> pro: product.created
 pro --> pro1:
 @enduml
+
+
+@startuml
+'https://plantuml.com/sequence-diagram
+
+
+autonumber
+
+participant ":Product_C" as pro
+participant ":AMQP Broker" as bro
+participant ":Review_C" as rev
+participant ":RecoveryProduct" as rc
+participant ":AgregatedRating" as aggr
+
+
+-> pro: POST/review
+activate pro
+pro --> pro : save review
+[<- pro: 201
+pro -> bro: PUBLISH product.created
+deactivate pro
+activate bro
+bro -> rev: NOTIFY product.created
+rev --> rev: save product
+activate rev
+deactivate rev
+bro -> rc: NOTIFY product.created
+rc --> rc: save product
+activate rc
+deactivate rc
+bro -> aggr: NOTIFY product.created
+deactivate bro
+aggr --> aggr: save product
+activate aggr
+deactivate aggr
+
+
+@enduml
