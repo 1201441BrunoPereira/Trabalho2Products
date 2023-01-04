@@ -1,10 +1,7 @@
 package com.Product1_Q.Product1_Q.Interfaces.RabbitMQ;
 
-import com.Product1_Q.Product1_Q.Interfaces.repository.ProductRepository;
-import com.Product1_Q.Product1_Q.model.Product;
 import com.Product1_Q.Product1_Q.services.ProductService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +12,6 @@ public class RabbitMQConsumer {
     @Autowired
     private ProductService service;
 
-    // @Autowired
-    // private ProductRepository productRepository;
     @RabbitListener(queues = "#{autoDeleteQueue.name}")
     public void consumeJsonMessage(String product) throws JsonProcessingException {
         service.createByOther(product);

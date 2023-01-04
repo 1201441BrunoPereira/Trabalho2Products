@@ -1,7 +1,5 @@
 package com.Product1_Q.Product1_Q.Interfaces.repository;
 
-
-
 import com.Product1_Q.Product1_Q.model.Product;
 import com.Product1_Q.Product1_Q.model.ProductDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
