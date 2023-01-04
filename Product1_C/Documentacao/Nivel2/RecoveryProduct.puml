@@ -1,0 +1,41 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autoactivate on
+autonumber
+
+participant ":Product_C" as pro1
+participant ":AMQPBroker" as pro
+
+pro1 -> pro: product.created
+pro --> pro1:
+@enduml
+
+
+@startuml
+'https://plantuml.com/sequence-diagram
+
+
+autonumber
+
+participant ":Product_C" as pro
+participant ":AMQP Broker" as bro
+participant ":RecoveryProduct" as rc
+
+
+
+activate pro
+pro -> bro: PUBLISH productRecovery.request
+activate bro
+bro -> rc: NOTIFY productRecovery.request
+activate rc
+rc --> bro: List<Product>
+deactivate rc
+bro --> pro: List<Product>
+deactivate bro
+pro --> pro: save Products
+deactivate pro
+
+
+
+@enduml
