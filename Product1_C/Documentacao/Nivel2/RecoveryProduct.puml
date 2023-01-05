@@ -1,20 +1,6 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
-autoactivate on
-autonumber
-
-participant ":Product_C" as pro1
-participant ":AMQPBroker" as pro
-
-pro1 -> pro: product.created
-pro --> pro1:
-@enduml
-
-
-@startuml
-'https://plantuml.com/sequence-diagram
-
 
 autonumber
 
